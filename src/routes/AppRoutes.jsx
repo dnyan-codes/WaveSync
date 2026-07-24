@@ -8,6 +8,7 @@ import Alerts from "../pages/Alerts";
 import Profile from "../pages/Profile";
 import Settings from "../pages/Settings";
 import About from "../pages/About";
+import Architecture from "../pages/Architecture";
 import Incidents from "../pages/Incidents";
 import Agents from "../pages/Agents";
 import DataSources from "../pages/DataSources";
@@ -23,6 +24,7 @@ export default function AppRoutes() {
       <Route path="/map" element={<Map />} />
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/alerts" element={<Alerts />} />
+      <Route path="/architecture" element={<Architecture />} />
       <Route path="/incidents" element={<Incidents />} />
       <Route path="/agents" element={<Agents />} />
       <Route path="/data-sources" element={<DataSources />} />
