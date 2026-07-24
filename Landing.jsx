@@ -19,7 +19,7 @@ export default function Landing() {
         <div className="max-w-5xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span className="eyebrow justify-center">AI-powered ocean intelligence</span>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-6 leading-tight">
+            <h1 className="font-display text-5xl md:text-6xl font-bold text-white mt-6 leading-tight">
               Every reef, every net,<br />
               every drop of plastic — <span className="text-sonar">watched.</span>
             </h1>
@@ -27,7 +27,7 @@ export default function Landing() {
               WaveSync fuses drone, sonar, satellite, and IoT sensor data into one live ocean
               intelligence dashboard, investigated by a five-agent AI system.
             </p>
-            <div className="flex items-center justify-center gap-4 mt-8">
+            <div className="flex items-center justify-center flex-wrap gap-4 mt-8">
               <Link to="/dashboard" className="btn btn-sonar">Open Dashboard</Link>
               <Link to="/analytics" className="btn btn-ghost">View Analytics</Link>
             </div>
