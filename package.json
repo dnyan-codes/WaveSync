@@ -1,5 +1,6 @@
 {
-  "name": "wavesync",
+  "name": "deepsea-guardian",
+  "description": "DeepSea Guardian: AI-Based Deep Ocean Exploration & Environmental Monitoring",
   "private": true,
   "version": "1.0.0",
   "type": "module",

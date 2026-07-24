@@ -57,10 +57,10 @@ export default function Footer() {
               <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-sm">
                 <Waves size={18} className="text-white" strokeWidth={2.5} />
               </span>
-              <span className="text-lg font-bold text-slate-900 tracking-tight">WaveSync</span>
+              <span className="text-lg font-bold text-slate-900 tracking-tight">DeepSea Guardian</span>
             </div>
             <p className="text-sm text-slate-500 mt-4 leading-relaxed max-w-xs">
-              AI-powered flood monitoring and disaster management, built to keep communities informed and safe in real time.
+              AI-based deep ocean exploration and environmental monitoring, built to keep ecosystems monitored and stakeholders informed in real time.
             </p>
           </motion.div>
 
@@ -90,8 +90,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5">
                 <Mail size={16} className="text-blue-600 mt-0.5 shrink-0" />
-                <a href="mailto:support@wavesync.ai" className="text-sm text-slate-500 hover:text-blue-600 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm">
-                  support@wavesync.ai
+                <a href="mailto:support@deepseaguardian.ai" className="text-sm text-slate-500 hover:text-blue-600 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-sm">
+                  support@deepseaguardian.ai
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
@@ -140,7 +140,7 @@ export default function Footer() {
           className="mt-10 pt-6 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-3"
         >
           <p className="text-xs text-slate-400 text-center sm:text-left">
-            © {year} WaveSync. All rights reserved.
+            © {year} DeepSea Guardian. All rights reserved.
           </p>
           <p className="text-xs text-slate-400 text-center sm:text-right">
             Built for national-level hackathon demonstration purposes.

@@ -24,7 +24,7 @@ export default function Landing() {
               every drop of plastic — <span className="text-sonar">watched.</span>
             </h1>
             <p className="text-mist-dim text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
-              WaveSync fuses drone, sonar, satellite, and IoT sensor data into one live ocean
+              DeepSea Guardian fuses drone, sonar, satellite, and IoT sensor data into one live ocean
               intelligence dashboard, investigated by a five-agent AI system.
             </p>
             <div className="flex items-center justify-center flex-wrap gap-4 mt-8">
@@ -38,7 +38,7 @@ export default function Landing() {
       <section className="px-6 pb-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center font-display text-2xl md:text-3xl font-semibold text-white mb-10">
-            What WaveSync does
+            What DeepSea Guardian does
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {FEATURES.map((f, i) => (

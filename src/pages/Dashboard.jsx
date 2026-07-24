@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   Clock,
 } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 // ---------- Mock Data ----------
 
@@ -196,6 +197,7 @@ function AlertCard({ alert, index }) {
 // ---------- Main Dashboard ----------
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-slate-50 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-10">
@@ -212,7 +214,7 @@ export default function Dashboard() {
           <div className="relative z-10">
             <p className="text-blue-100 text-sm font-medium">Welcome back</p>
             <h1 className="text-2xl sm:text-3xl font-bold text-white mt-1">
-              WaveSync Flood Monitoring Overview
+              DeepSea Guardian Flood Monitoring Overview
             </h1>
             <p className="text-blue-50/90 text-sm mt-2 max-w-xl">
               AI-driven monitoring across river basins is active. 3 regions currently under advisory or watch status.
@@ -282,26 +284,32 @@ export default function Dashboard() {
           >
             <h2 className="text-lg font-bold text-slate-900 mb-4">Quick Actions</h2>
             <div className="grid grid-cols-2 gap-3">
-              {quickActions.map((action, i) => {
-                const Icon = action.icon;
-                return (
-                  <motion.button
-                    key={action.id}
-                    variants={scaleIn}
-                    custom={i}
-                    initial="hidden"
-                    animate="visible"
-                    className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                  >
-                    <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-50">
-                      <Icon size={16} className="text-blue-600" strokeWidth={2.25} />
-                    </span>
-                    <span className="text-xs font-medium text-slate-700 text-center leading-tight">
-                      {action.label}
-                    </span>
-                  </motion.button>
-                );
-              })}
+                {quickActions.map((action, i) => {
+                  const Icon = action.icon;
+                  return (
+                    <motion.button
+                      key={action.id}
+                      variants={scaleIn}
+                      custom={i}
+                      initial="hidden"
+                      animate="visible"
+                      onClick={() => {
+                        if (action.label === 'View Live Map') navigate('/map');
+                        if (action.label === 'Generate Report') alert('Report generated (mock).');
+                        if (action.label === 'Manage Alerts') navigate('/alerts');
+                        if (action.label === 'System Settings') navigate('/settings');
+                      }}
+                      className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    >
+                      <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-blue-50">
+                        <Icon size={16} className="text-blue-600" strokeWidth={2.25} />
+                      </span>
+                      <span className="text-xs font-medium text-slate-700 text-center leading-tight">
+                        {action.label}
+                      </span>
+                    </motion.button>
+                  );
+                })}
             </div>
           </motion.div>
         </section>

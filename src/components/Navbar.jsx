@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Waves, Menu, X, Radio } from "lucide-react";
+import Dropdown from './Dropdown';
 
 const NAV_LINKS = [
   { label: "Home", path: "/" },
@@ -10,6 +11,8 @@ const NAV_LINKS = [
   { label: "Analytics", path: "/analytics" },
   { label: "Alerts", path: "/alerts" },
   { label: "Profile", path: "/profile" },
+  { label: "Settings", path: "/settings" },
+  { label: "About", path: "/about" },
 ];
 
 export default function Navbar() {
@@ -96,7 +99,10 @@ export default function Navbar() {
             <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-sm">
               <Waves size={18} className="text-white" strokeWidth={2.5} />
             </span>
-            <span className="text-lg font-bold tracking-tight">WaveSync</span>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold tracking-tight">DeepSea Guardian</span>
+              <span className="text-[11px] tracking-wide text-slate-500">DETECT • EXPLAIN • PREDICT • PRIORITIZE • RECOMMEND • COORDINATE</span>
+            </div>
           </NavLink>
 
           <div className="hidden lg:flex items-center gap-1">
@@ -121,6 +127,9 @@ export default function Navbar() {
                 )}
               </NavLink>
             ))}
+            <div className="ml-2">
+              <Dropdown label="More" items={[{ label: 'Incidents', path: '/incidents' }, { label: 'Agents', path: '/agents' }, { label: 'Data Sources', path: '/data-sources' }, { label: 'Reports', path: '/reports' }, { label: 'Contact', path: '/contact' }]} />
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
