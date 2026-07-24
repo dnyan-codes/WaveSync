@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
 
 export default function MainLayout({ children }) {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.08),_transparent_28%),linear-gradient(180deg,_#f8fafc_0%,_#f8fafc_100%)]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(14,45,92,0.82),transparent_30%),linear-gradient(180deg,#020617_0%,#071026_40%,#020617_100%)] text-slate-100">
       <motion.main
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

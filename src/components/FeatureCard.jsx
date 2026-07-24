@@ -1,20 +1,19 @@
-// FeatureCard — Sakshi
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function FeatureCard({ icon: Icon, title, description, index = 0 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
+    <motion.article
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="panel p-6 hover:border-sonar/40 transition-colors"
+      className="glass-card rounded-[1.75rem] border-slate-700/70 p-6 shadow-soft"
     >
-      <div className="w-11 h-11 rounded-full bg-panel-2 border border-grid flex items-center justify-center mb-4">
-        <Icon size={20} className="text-sonar" strokeWidth={2} />
+      <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-cyan-400 to-blue-600 text-white shadow-sm">
+        <Icon size={24} />
       </div>
-      <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-      <p className="text-sm text-mist-dim leading-relaxed">{description}</p>
-    </motion.div>
+      <h3 className="mt-5 text-xl font-semibold text-white">{title}</h3>
+      <p className="mt-3 text-sm leading-7 text-slate-300">{description}</p>
+    </motion.article>
   );
 }
