@@ -1,0 +1,17 @@
+{
+  "riskTrend": [
+    { "day": "Jul 15", "risk": 22 }, { "day": "Jul 16", "risk": 25 },
+    { "day": "Jul 17", "risk": 24 }, { "day": "Jul 18", "risk": 30 },
+    { "day": "Jul 19", "risk": 34 }, { "day": "Jul 20", "risk": 31 },
+    { "day": "Jul 21", "risk": 38 }, { "day": "Jul 22", "risk": 42 },
+    { "day": "Jul 23", "risk": 39 }, { "day": "Jul 24", "risk": 45 }
+  ],
+  "incidentsByType": [
+    { "type": "Plastic", "count": 14 },
+    { "type": "Bleaching", "count": 9 },
+    { "type": "Ghost Nets", "count": 6 },
+    { "type": "Dumping", "count": 4 },
+    { "type": "Species", "count": 11 }
+  ],
+  "stats": { "sectorsMonitored": 6, "activeAlerts": 3, "oceanHealthIndex": 68, "feedUptime": 98.2 }
+}

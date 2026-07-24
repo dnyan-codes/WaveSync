@@ -1,0 +1,7 @@
+[
+  { "id": "alert-1", "incidentId": "case-1042", "severity": "high", "message": "Ghost net confirmed via sonar in Reef Flats East", "time": "14 min ago" },
+  { "id": "alert-2", "incidentId": "case-1041", "severity": "high", "message": "Bleaching coverage crossed 40% in Coral Shelf North", "time": "31 min ago" },
+  { "id": "alert-3", "incidentId": "case-1039", "severity": "medium", "message": "Plastic cluster growing in Open Channel", "time": "52 min ago" },
+  { "id": "alert-4", "incidentId": "case-1036", "severity": "medium", "message": "Unscheduled vessel stop flagged near Shoal Basin", "time": "1 hr ago" },
+  { "id": "alert-5", "incidentId": "case-1031", "severity": "low", "message": "New species sighting logged in Trench Approach", "time": "3 hr ago" }
+]

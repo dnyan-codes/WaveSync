@@ -1,0 +1,7 @@
+[
+  { "id": "vision", "name": "Vision Agent", "role": "Reads drone & satellite imagery for visual threats", "icon": "Search" },
+  { "id": "pollution", "name": "Pollution Detection Agent", "role": "Flags chemical & turbidity signatures", "icon": "TriangleAlert" },
+  { "id": "biodiversity", "name": "Biodiversity Agent", "role": "Tracks species impact & population shifts", "icon": "Fish" },
+  { "id": "risk", "name": "Risk Assessment Agent", "role": "Fuses signals into one composite risk score", "icon": "TrendingUp" },
+  { "id": "decision", "name": "Decision Agent", "role": "Weighs all findings into a final recommendation", "icon": "ShieldCheck" }
+]

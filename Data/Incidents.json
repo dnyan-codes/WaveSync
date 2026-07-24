@@ -1,0 +1,7 @@
+[
+  { "id": "case-1042", "sectorName": "Reef Flats East", "type": "ghost_net", "label": "Ghost Fishing Net", "severity": "high", "status": "investigating", "summary": "Sonar picked up a dense, non-organic shape drifting near the reef flats — consistent with an abandoned fishing net." },
+  { "id": "case-1041", "sectorName": "Coral Shelf North", "type": "bleaching", "label": "Coral Bleaching", "severity": "high", "status": "investigating", "summary": "Drone imagery shows a significant pale/white coloration shift across a large coral colony." },
+  { "id": "case-1039", "sectorName": "Open Channel", "type": "plastic", "label": "Plastic Accumulation", "severity": "medium", "status": "open", "summary": "Satellite imagery flagged a surface debris cluster; nearby IoT buoys report elevated turbidity." },
+  { "id": "case-1036", "sectorName": "Shoal Basin", "type": "dumping", "label": "Illegal Dumping", "severity": "medium", "status": "open", "summary": "A vessel activity pattern near the sector boundary matches known illegal dumping routes." },
+  { "id": "case-1031", "sectorName": "Trench Approach", "type": "species", "label": "Endangered Species Sighting", "severity": "low", "status": "resolved", "summary": "Drone footage identified a hawksbill turtle in an area not previously logged this season." }
+]
