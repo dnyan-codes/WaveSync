@@ -31,10 +31,6 @@ body {
   background: radial-gradient(circle at top, rgba(14, 45, 92, 0.92), #020617 35%);
 }
 
-a {
-  text-decoration: none;
-}
-
 button,
 input,
 textarea,
@@ -55,4 +51,44 @@ select {
   .glass-card {
     @apply bg-slate-950/75 border border-slate-700/60 backdrop-blur-xl;
   }
+}
+
+/* Underwater animations */
+@keyframes bubble-rise {
+  0% { transform: translateY(20px) scale(0.6); opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { transform: translateY(-160px) scale(1); opacity: 0; }
+}
+
+@keyframes slow-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.underwater-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 12%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.35));
+  border-radius: 9999px;
+  animation: bubble-rise 6s linear infinite;
+  opacity: 0.8;
+}
+
+.bubble.small { width: 6px; height: 6px; opacity: 0.7; }
+.bubble.med { width: 10px; height: 10px; opacity: 0.6; animation-duration: 9s; }
+.bubble.large { width: 14px; height: 14px; opacity: 0.55; animation-duration: 11s; }
+
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
 }

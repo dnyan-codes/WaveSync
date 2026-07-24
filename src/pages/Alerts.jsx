@@ -1,11 +1,7 @@
 import { motion } from 'framer-motion';
 import { AlertTriangle, BellRing, ShieldAlert, CheckCircle2 } from 'lucide-react';
-
-const alerts = [
-  { id: 1, title: 'Sangli district evacuation alert', detail: 'River level rose above critical thresholds near the basin corridor.', severity: 'critical', time: '12 min ago' },
-  { id: 2, title: 'Western Ghats rainfall advisory', detail: 'Heavy rainfall accumulation is increasing runoff risk for downstream zones.', severity: 'warning', time: '48 min ago' },
-  { id: 3, title: 'Pune node restored', detail: 'Sensor group 4 reconnected and resumed transmission.', severity: 'info', time: '2 hr ago' },
-];
+import { useEffect, useState } from 'react';
+import mockApi from '../services/mockApi';
 
 const severityStyles = {
   critical: 'bg-red-50 text-red-600 border-red-200',
@@ -14,6 +10,24 @@ const severityStyles = {
 };
 
 export default function Alerts() {
+  const [alerts, setAlerts] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    async function load() {
+      const list = await mockApi.getAlerts();
+      if (!mounted) return;
+      setAlerts(list);
+    }
+    load();
+    return () => { mounted = false; };
+  }, []);
+
+  async function update(id, status) {
+    await mockApi.updateAlertStatus(id, status);
+    setAlerts((prev) => prev.map((a) => (a.id === id ? { ...a, status } : a)));
+  }
+
   return (
     <div className="min-h-screen bg-transparent pb-16">
       <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
@@ -25,7 +39,7 @@ export default function Alerts() {
               <p className="mt-2 max-w-2xl text-sm text-slate-600">Stay informed with real-time region monitoring, prioritised incident response, and verified updates.</p>
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700">
-              <CheckCircle2 size={16} /> 3 active notices
+              <CheckCircle2 size={16} /> {alerts.length} active notices
             </div>
           </div>
 
@@ -40,7 +54,12 @@ export default function Alerts() {
                       </span>
                       <div>
                         <h2 className="text-base font-semibold text-slate-900">{alert.title}</h2>
-                        <p className="mt-1 text-sm leading-7 text-slate-600">{alert.detail}</p>
+                        <p className="mt-1 text-sm leading-7 text-slate-600">{alert.detail ?? 'No additional details'}</p>
+                        <div className="mt-3 flex items-center gap-2">
+                          <button onClick={() => update(alert.id, 'acknowledged')} className="text-sm px-3 py-1 rounded-md bg-white/10">Acknowledge</button>
+                          <button onClick={() => update(alert.id, 'resolved')} className="text-sm px-3 py-1 rounded-md bg-white/10">Resolve</button>
+                          <button onClick={() => update(alert.id, 'investigating')} className="text-sm px-3 py-1 rounded-md bg-blue-600 text-white">Investigate</button>
+                        </div>
                       </div>
                     </div>
                     <span className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">{alert.time}</span>

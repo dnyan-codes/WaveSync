@@ -17,6 +17,9 @@ import {
   Clock,
 } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import mockApi from '../services/mockApi';
+import Modal from '../components/Modal';
 
 // ---------- Mock Data ----------
 
@@ -89,15 +92,9 @@ function SectionHeading({ title, subtitle }) {
   );
 }
 
-function StatCard({ icon: Icon, label, value, sublabel, index }) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      custom={index}
-      initial="hidden"
-      animate="visible"
-      className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex items-start justify-between hover:shadow-md transition-shadow duration-300"
-    >
+function StatCard({ icon: Icon, label, value, sublabel, index, onClick }) {
+  const content = (
+    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex items-start justify-between hover:shadow-md transition-shadow duration-300">
       <div>
         <p className="text-sm text-slate-500 font-medium">{label}</p>
         <p className="text-2xl font-bold text-slate-900 mt-1">{value}</p>
@@ -106,6 +103,16 @@ function StatCard({ icon: Icon, label, value, sublabel, index }) {
       <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-sm shrink-0">
         <Icon size={20} className="text-white" strokeWidth={2.25} />
       </span>
+    </div>
+  );
+
+  return (
+    <motion.div variants={fadeUp} custom={index} initial="hidden" animate="visible">
+      {onClick ? (
+        <button onClick={onClick} className="w-full text-left">{content}</button>
+      ) : (
+        content
+      )}
     </motion.div>
   );
 }
@@ -198,6 +205,26 @@ function AlertCard({ alert, index }) {
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const [live, setLive] = useState({ activeSensors: 0, offline: 0, avgWaterLevel: 0, riskScore: 0 });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+
+  useEffect(() => {
+    let mounted = true;
+    async function refresh() {
+      const k = await mockApi.getKPIs();
+      if (!mounted) return;
+      setLive(k);
+    }
+    refresh();
+    const id = setInterval(refresh, 5000);
+    return () => { mounted = false; clearInterval(id); };
+  }, []);
+
+  function openKpiDetails(name) {
+    setModalContent({ title: name, body: `Live details for ${name}: ${JSON.stringify(live)}` });
+    setModalOpen(true);
+  }
   return (
     <div className="min-h-screen bg-slate-50 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-10">
@@ -214,10 +241,10 @@ export default function Dashboard() {
           <div className="relative z-10">
             <p className="text-blue-100 text-sm font-medium">Welcome back</p>
             <h1 className="text-2xl sm:text-3xl font-bold text-white mt-1">
-              DeepSea Guardian Flood Monitoring Overview
+              DeepSea Guardian Mission Control
             </h1>
             <p className="text-blue-50/90 text-sm mt-2 max-w-xl">
-              AI-driven monitoring across river basins is active. 3 regions currently under advisory or watch status.
+              AI-driven monitoring across ocean sectors is active. Live KPIs update automatically.
             </p>
           </div>
         </motion.div>
@@ -226,10 +253,10 @@ export default function Dashboard() {
         <section>
           <SectionHeading title="Live Statistics" subtitle="Real-time system overview" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard icon={Waves} label="Flood Risk Level" value="Moderate" sublabel="3 basins on watch" index={0} />
-            <StatCard icon={Radio} label="Active Sensors" value="128 / 132" sublabel="4 offline" index={1} />
-            <StatCard icon={Droplets} label="Avg. Water Level" value="7.2 m" sublabel="+0.4m vs yesterday" index={2} />
-            <StatCard icon={Activity} label="AI Predictions Today" value="342" sublabel="98.2% confidence avg" index={3} />
+            <StatCard icon={Waves} label="Risk Score" value={`${live.riskScore}`} sublabel={`${live.incidents} incidents`} index={0} onClick={() => openKpiDetails('Risk Score')} />
+            <StatCard icon={Radio} label="Active Sensors" value={`${live.activeSensors}`} sublabel={`${live.offline} offline`} index={1} onClick={() => openKpiDetails('Active Sensors')} />
+            <StatCard icon={Droplets} label="Avg. Water Level" value={`${live.avgWaterLevel} m`} sublabel="Real-time average" index={2} onClick={() => openKpiDetails('Avg. Water Level')} />
+            <StatCard icon={Activity} label="AI Predictions Today" value="—" sublabel="Auto-updating" index={3} onClick={() => openKpiDetails('AI Predictions')} />
           </div>
         </section>
 
@@ -342,6 +369,9 @@ export default function Dashboard() {
           </div>
         </section>
       </div>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={modalContent?.title}>
+        <pre className="text-xs bg-slate-900 p-3 rounded-md overflow-auto">{modalContent?.body}</pre>
+      </Modal>
     </div>
   );
 }

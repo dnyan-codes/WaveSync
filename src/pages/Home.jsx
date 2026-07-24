@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Waves, ArrowRight } from 'lucide-react';
 import AgentCard from '../components/AgentCard';
+import UnderwaterHero from '../components/UnderwaterHero';
 import agents from '../data/Agent.json';
 
 export default function Home() {
@@ -50,11 +51,14 @@ export default function Home() {
 
             <div className="rounded-[1.5rem] border border-white/6 bg-gradient-to-b from-slate-950/70 to-slate-900/50 p-6 shadow-soft backdrop-blur-xl">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm text-slate-400">Animated Earth</h3>
-                <p className="text-xs text-slate-300">Ocean background • Particles • Mission control</p>
+                <h3 className="text-sm text-slate-400">Animated Ocean</h3>
+                <p className="text-xs text-slate-300">Underwater background • Particles • Mission control</p>
               </div>
               <div className="mt-4 h-64 rounded-xl bg-gradient-to-br from-slate-800/40 to-slate-900/30 border border-white/5 flex items-center justify-center">
-                <div className="text-slate-400">[Animated Earth • Particles • Mission Control Visual — demo placeholder]</div>
+                <div className="w-full h-full">
+                  {/* Replace placeholder with animated underwater hero component */}
+                  <UnderwaterHero />
+                </div>
               </div>
             </div>
           </div>
